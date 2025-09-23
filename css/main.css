@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+.roboto-slab-titulo{
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.footer_container{
+    background-color: slategray;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.fa-foursquare {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+.nav_bar{
+    background-color: #030640;
+}
+
+.social_media{
+    background-color: #030640;
+    width: 100%;
+
+}
+
+.social_media>div{
+  margin-left: 5%;
+}
+
+.tarjeta_miembro{
+  color: white;
+}
+
+.tarjeta_miembro>img{
+  opacity: .5;
+}
+
+.tarjeta_contacto{
+  color: white;
+  text-align: left;
+  border: 5px solid #030640;
+  padding: 10px;
+  border-radius: 5px;
+}
+.tarjeta_contacto>a{
+  color: white;
+  text-decoration: none;
+  
+}
+.tarjeta_contacto>img{
+  width: 50px;
+  height: 50px;
+}
+/* Contenedor */
+.social-sprite {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Sprite base */
+.icon {
+  display: inline-block;
+  width: 64px;           /* tamaño de cada ícono */
+  height: 64px;
+  background-image: url("../images/general/sprite_social.png"); /* mueve el PNG a tu carpeta /images */
+  background-repeat: no-repeat;
+  transition: transform .15s ease;
+}
+.icon:hover { transform: scale(1.06); }
+
+/* Accesibilidad: ocultar texto visual pero mantenerlo para lectores de pantalla */
+.vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,1px,1px);
+  white-space: nowrap; border: 0;
+}
+
+/* Posiciones del sprite (64x64 c/u en una tira horizontal) */
+.icon.fb { background-position:   0    0; }     /* x =   0 */
+.icon.tw { background-position:  -64px 0; }     /* x = -64 */
+.icon.ig { background-position: -128px 0; }     /* x = -128 */
+
+/* Tamaño reducido opcional (32px) reutilizando el mismo sprite */
+.icon.sm { width: 32px; height: 32px; background-size: 192px 64px; }
+.icon.sm.fb { background-position:   0    0; }
+.icon.sm.tw { background-position:  -64px 0; }
+.icon.sm.ig { background-position: -128px 0; }
+
+
+.tarjeta_colabora{
+  background-color: #030640;
+}
