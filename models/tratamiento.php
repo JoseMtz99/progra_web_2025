@@ -31,7 +31,7 @@ class Tratamiento extends Sistema {
                                     WHERE id_tratamiento = :id_tratamiento");
         $sth->bindParam(":id_tratamiento", $id, PDO::PARAM_INT);
         $sth->execute();
-        $data = $sth->fetchAll();
+        $data = $sth->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
     function update($data, $id){

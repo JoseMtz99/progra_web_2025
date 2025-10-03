@@ -32,7 +32,7 @@ class Institucion extends Sistema {
                                     WHERE id_institucion = :id_institucion");
         $sth->bindParam(":id_institucion", $id, PDO::PARAM_INT);
         $sth->execute();
-        $data = $sth->fetchAll();
+        $data = $sth->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
     function update($data, $id){

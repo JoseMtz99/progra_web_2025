@@ -20,7 +20,7 @@
     <?php foreach ($data as $investigador): ?>
     <tr>
       <th scope="row"><?php echo $investigador['id_investigador']; ?></th>
-      <td><img src="../../../images/investigadores/<?php echo $investigador['fotografia']; ?>" width="75" height="75" class="rounded-circle" alt="logo"></td>
+      <td><img src="../images/investigadores/<?php echo $investigador['fotografia'];?>" width="75" height="75" class="rounded-circle" alt="logo"></td>
       <td><?php echo $investigador['nombre']; ?></td>
       <td><?php echo $investigador['primer_apellido']; ?></td>
       <td><?php echo $investigador['segundo_apellido']; ?></td>

@@ -47,7 +47,7 @@ class Investigador extends Sistema {
                                     WHERE id_investigador = :id_investigador");
         $sth->bindParam(":id_investigador", $id, PDO::PARAM_INT);
         $sth->execute();
-        $data = $sth->fetchAll();
+        $data = $sth->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
     function update($data, $id){
