@@ -69,6 +69,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="acerca_de.php">Acerca de nosotros</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./panel/institucion.php">Panel</a>
+                    </li>
                 </ul>
             </div>
         </div>

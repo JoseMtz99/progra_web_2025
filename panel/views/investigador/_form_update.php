@@ -17,16 +17,40 @@
         <input type="text" class="form-control" id="fotografia" name="fotografia" value="<?php echo isset($data['fotografia']) ? $data['fotografia'] : ''; ?>" placeholder="Fotografía" required>
     </div>
     <div class="mb-3">
-        <label for="Id_institucion" class="form-label">Id de la Institución</label>
-        <input type="number" class="form-control" id="id_institucion" name="id_institucion" value="<?php echo isset($data['id_institucion']) ? $data['id_institucion'] : ''; ?>" placeholder="Id Institución" required>
-    </div>
-    <div class="mb-3">
         <label for="Semblanza" class="form-label">Semblanza</label>
         <input type="text" class="form-control" id="semblanza" name="semblanza" value="<?php echo isset($data['semblanza']) ? $data['semblanza'] : ''; ?>" placeholder="Semblanza">
     </div>
     <div class="mb-3">
-        <label for="Id_tratamiento" class="form-label">Id del tratamiento</label>
-        <input type="text" class="form-control" id="id_tratamiento" name="id_tratamiento" value="<?php echo isset($data['id_tratamiento']) ? $data['id_tratamiento'] : ''; ?>" placeholder="Id del tratamiento">
+        <label for="Id_institucion" class="form-label">Institución</label>
+        <select name="id_institucion" id="id_institucion" class="form-select" required>
+            <option value="" disabled selected>Seleccione una institución</option>
+            <?php foreach ($instituciones as $institucion): 
+                $selected = "";
+                if ($data['id_institucion'] == $institucion['id_institucion']) {
+                    $selected = "selected";
+                }
+                ?>
+                <option <?php echo $selected;?> value="<?php  echo($institucion['id_institucion']) ?>">
+                    <?php echo($institucion['institucion']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="Id_tratamiento" class="form-label">Tratamiento</label>
+        <select name="id_tratamiento" id="id_tratamiento" class="form-select" required>
+            <option value="" disabled selected>Seleccione un tratamiento</option>
+            <?php foreach ($tratamientos as $tratamiento): 
+                $selected = "";
+                if ($data['id_tratamiento'] == $tratamiento['id_tratamiento']) {
+                    $selected = "selected";
+                }
+                ?>
+                <option <?php echo $selected; ?> value="<?php  echo($tratamiento['id_tratamiento']) ?>">
+                    <?php echo($tratamiento['tratamiento']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="mb-3">
         <input type="submit" class="btn btn-success" id="enviar" name="enviar" value="Guardar">
