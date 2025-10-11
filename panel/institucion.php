@@ -8,7 +8,6 @@ switch ($action) {
     case 'create':
         if (isset($_POST['enviar'])) {
             $data['institucion'] = $_POST['institucion'];
-            $data['logotipo'] = $_POST['logotipo'];
             $row = $app -> create($data);
             if ($row){
                 $alerta['mensaje'] = "Institución dada de alta correctamente";
@@ -29,7 +28,6 @@ switch ($action) {
     case 'update':
         if (isset($_POST['enviar'])) {
             $data['institucion'] = $_POST['institucion'];
-            $data['logotipo'] = $_POST['logotipo'];
             $id = $_GET['id'];
             $row = $app -> update($data, $id); 
             if ($row){
