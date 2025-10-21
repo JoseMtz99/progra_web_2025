@@ -5,6 +5,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'login';
 switch ($action) {
     case 'logout':
         $app->logout();
+        $alerta['mensaje'] = "Usted ha salido correctamente del sistema";
+        $alerta['tipo'] = "success";
+        include_once("./views/alert.php");
+        include_once("./views/login/login.php");
         break;
     case 'login':
         if (isset($_POST['enviar'])) {

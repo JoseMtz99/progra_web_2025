@@ -96,5 +96,14 @@ class Sistema{
         }
         return null;
     }
+    function checarRol($rol){
+        $roles = isset($_SESSION['roles']) ? $_SESSION['roles'] : array();
+        if(!in_array($rol, $roles)){
+            $alerta['mensaje'] = "Usted no tiene el rol adecuado";
+            $alerta['tipo'] = "danger";
+            include_once("./views/error.php");
+            die();
+        }
+    }
 }
 ?>

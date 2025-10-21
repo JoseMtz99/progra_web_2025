@@ -18,10 +18,44 @@ class Investigador extends Sistema {
             $sth->bindParam(":fotografia", $fotografia, PDO::PARAM_STR);
             $sth->execute();
             $affected_rows = $sth->rowCount();
+            $sql = "INSERT INTO usuario (correo, password) 
+                    VALUES (:correo, :password)";
+            $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":correo", $data['correo'], PDO::PARAM_STR);
+            $pwd = md5($data['password']);
+            $sth->bindParam(":password", $pwd, PDO::PARAM_STR);
+            $sth->execute();
+            $sql = "SELECT * from usuario WHERE correo = :correo";
+            $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":correo", $data['correo'], PDO::PARAM_STR);
+            $sth->execute();
+            $user = $sth->fetch(PDO::FETCH_ASSOC);
+            //print_r($user);
+            //print_r($_POST);
+            //die();
+            $id_usuario = $user['id_usuario'];
+            $sql = "INSERT INTO usuario_role (id_role, id_usuario)
+                    VALUES (2, :id_usuario)";
+            $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+            $sth->execute();
+            $sql = "SELECT * from investigador order by id_investigador DESC LIMIT 1";
+            $sth = $this->_DB->prepare($sql);
+            $sth->execute();
+            $investigador = $sth->fetch(PDO::FETCH_ASSOC);
+            $id_investigador = $investigador['id_investigador'];
+            $sql = "UPDATE investigador set id_usuario = :id_usuario 
+                    WHERE id_investigador = :id_investigador";
+            $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+            $sth->bindParam(":id_investigador", $id_investigador, PDO::PARAM_INT);
+            $sth->execute();
             $this->_DB -> commit();
             return $affected_rows;
         } catch (Exception $ex) {
+            //print_r($data);
             $this->_DB -> rollback();
+            //die();
         }
         return null;
     }
