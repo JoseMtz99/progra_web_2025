@@ -5,6 +5,7 @@ if(isset($alerta['mensaje']) && isset($alerta['tipo'])): ?>
         <?php echo $alerta['mensaje']; ?>
     </div>
 <?php endif; 
+include_once("./views/login/login.php");
 include_once("./views/login/footer.php");
 
 ?>

@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a href="../index.php" class="nav-link active" aria-current="page">Inicio</a>
+          <a href="./index.php" class="nav-link active" aria-current="page">Inicio</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -35,8 +35,8 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="usuario.php">Usuarios</a></li>
-            <li><a class="dropdown-item" href="roles.php">Roles</a></li>
-            <li><a class="dropdown-item" href="privilegios.php">Privilegios</a></li>
+            <li><a class="dropdown-item" href="role.php">Roles</a></li>
+            <li><a class="dropdown-item" href="privilegio.php">Privilegios</a></li>
           </ul>
         </li>
         <li class="nav-item">

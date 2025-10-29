@@ -30,13 +30,14 @@ class Investigador extends Sistema {
             $sth->bindParam(":correo", $data['correo'], PDO::PARAM_STR);
             $sth->execute();
             $user = $sth->fetch(PDO::FETCH_ASSOC);
-            //print_r($user);
-            //print_r($_POST);
-            //die();
             $id_usuario = $user['id_usuario'];
             $sql = "INSERT INTO usuario_role (id_role, id_usuario)
-                    VALUES (2, :id_usuario)";
+                    VALUES (:id_role, :id_usuario)";
             $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":id_role", 2, PDO::PARAM_INT);
+            $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+            $sth->execute();
+            $sth->bindParam(":id_role", 3, PDO::PARAM_INT);
             $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
             $sth->execute();
             $sql = "SELECT * from investigador order by id_investigador DESC LIMIT 1";
@@ -50,6 +51,17 @@ class Investigador extends Sistema {
             $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
             $sth->bindParam(":id_investigador", $id_investigador, PDO::PARAM_INT);
             $sth->execute();
+            $destinatario = $data['correo'];
+            $asunto = "Bienvenido a la Red de investigación";
+            $mensaje = "Hola " . $data['nombre'] ." ". $data['primer_apellido']. ",<br><br>
+                        Gracias por registrarte en la Red de investigación del ITCelaya.<br><br>
+                        Tus datos de acceso son:<br>
+                        Correo: " . $data['correo'] . "<br>
+                        Contraseña: " . $data['password'] . "<br><br>
+                        Saludos,<br>
+                        Red de investigación ITCelaya";
+            $nombre = $data['nombre'] ." ". $data['primer_apellido']." ". $data['segundo_apellido'];
+            $mail = $this->enviarCorreo($destinatario, $asunto, $mensaje, $nombre);
             $this->_DB -> commit();
             return $affected_rows;
         } catch (Exception $ex) {

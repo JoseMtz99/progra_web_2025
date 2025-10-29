@@ -18,7 +18,7 @@
       <td>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <a href="usuario.php?action=update&id=<?php echo $usuario['id_usuario']; ?>" class="btn btn-warning">Editar</a>
-            <a href="usuario.php?action=readRole&id=<?php echo $usuario['id_usuario']; ?>" class="btn btn-success">Roles</a>
+            <a href="usuario.php?action=readUserRole&id=<?php echo $usuario['id_usuario']; ?>" class="btn btn-success">Roles</a>
             <a href="usuario.php?action=delete&id=<?php echo $usuario['id_usuario']; ?>"  class="btn btn-danger">Eliminar</a>
         </div>
       </td>

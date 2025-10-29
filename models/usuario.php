@@ -37,6 +37,66 @@ class Usuario extends Sistema {
         $data = $sth->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
+
+    function readRole(){
+        $this->connect();
+        $sth = $this->_DB->prepare("SELECT *
+                                    FROM role");
+        $sth->execute();
+        $data = $sth->fetchAll();
+        return $data;
+    }
+
+    function readUserRole($id_usuario){
+        $this->connect();
+        $sth = $this->_DB->prepare("SELECT r.role
+                                    FROM usuario_role ur
+                                    JOIN role r ON ur.id_role = r.id_role
+                                    WHERE ur.id_usuario = :id_usuario");
+        $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+        $sth->execute();
+        $data = $sth->fetchAll();
+        return $data;
+    }
+
+    function insertRole($data){
+        $this->connect();
+        $this -> _DB -> beginTransaction();
+        try {
+            $sql= ("INSERT INTO usuario_role (id_usuario, id_role) 
+                    VALUES (:id_usuario, :id_role)");
+            $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":id_usuario", $data['id_usuario'], PDO::PARAM_INT);
+            $sth->bindParam(":id_role", $data['id_role'], PDO::PARAM_INT);
+            $sth->execute();
+            $affected_rows = $sth->rowCount();
+            $this->_DB -> commit();
+            return $affected_rows;
+        } catch (Exception $ex) {
+            $this->_DB -> rollback();
+        }
+        return null;
+    }
+
+    function deleteRole($data){
+        $this->connect();
+        $this -> _DB -> beginTransaction();
+        try {
+            $sql = "DELETE FROM usuario_role 
+                    WHERE id_usuario = :id_usuario AND id_role = :id_role";
+            $sth = $this->_DB->prepare($sql);
+            $sth->bindParam(":id_usuario", $data['id_usuario'], PDO::PARAM_INT);
+            $sth->bindParam(":id_role", $data['id_role'], PDO::PARAM_INT);
+            $sth->execute();
+            $affected_rows = $sth->rowCount();
+            $this->_DB -> commit();
+            return $affected_rows;
+        } catch (Exception $ex) {
+            $this->_DB -> rollback();
+        }
+        return null;
+    }
+    
     function update($data, $id){
         if (!is_numeric($id)) {
             return null;    

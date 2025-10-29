@@ -1,6 +1,7 @@
 <?php
 require_once("../models/usuario.php");
 $app = new Usuario();
+$app->checarRol('Administrador');
 $action = isset($_GET['action']) ? $_GET['action'] : 'read';
 $data = array();
 include_once("./views/header.php");
@@ -67,7 +68,60 @@ switch ($action) {
         $data = $app -> read();
         include_once("./views/usuario/index.php");
         break;
-    
+        
+    case 'readUserRole':
+        $id_usuario = $_GET['id'];
+        $user_role = $app -> readUserRole($id_usuario);
+        $data = $app -> readRole();
+        include_once("./views/usuario/roles.php");
+        break;
+
+    case 'insertRole':  
+        if (isset($_POST['enviar'])) {
+            $data['id_usuario'] = $_GET['id_usuario'];
+            $id_usuario = $data['id_usuario'];
+            $data['id_role'] = $_GET['id_role'];
+            $row = $app -> insertRole($data);
+            if ($row){
+                $alerta['mensaje'] = "Rol asignado correctamente";
+                $alerta['tipo'] = "success";
+                include_once("./views/alert.php");
+            }else{
+                $alerta['mensaje'] = "El rol no fue asignado";
+                $alerta['tipo'] = "danger";
+                include_once("./views/alert.php");
+            }
+            $user_role = $app -> readUserRole($data['id_usuario']);
+            $data = $app -> readRole();
+            include_once("./views/usuario/roles.php");
+        }else{
+            include_once("./views/usuario/index.php");
+        }
+        break;
+
+    case 'deleteRole':
+        if (isset($_POST['enviar'])) {
+            $data['id_usuario'] = $_GET['id_usuario'];
+            $id_usuario = $data['id_usuario'];
+            $data['id_role'] = $_GET['id_role'];
+            $row = $app -> deleteRole($data);
+            if ($row){
+                $alerta['mensaje'] = "Rol quitado correctamente";
+                $alerta['tipo'] = "success";
+                include_once("./views/alert.php");
+            }else{
+                $alerta['mensaje'] = "El rol no fue quitado";
+                $alerta['tipo'] = "danger";
+                include_once("./views/alert.php");
+            }
+            $user_role = $app -> readUserRole($data['id_usuario']);
+            $data = $app -> readRole();
+            include_once("./views/usuario/roles.php");
+        }else{
+            include_once("./views/usuario/index.php");
+        }
+        break;
+
     case 'read':
     default:
         $data = $app -> read();
