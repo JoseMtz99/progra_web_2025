@@ -17,12 +17,12 @@ include_once("./views/login/header.php");
         </div>
         <div class="mb-3 row">
             <div class="col-sm-10">
-                <input name="token" type="hidden" class="form-control" id="token" value="<?php isset($_GET['token']) ? print($_GET['token']) : print($token)?>">
+                <input name="token" type="hidden" class="form-control" id="token" value="<?php isset($peticion['token']) ? print($peticion['token']) : print($token)?>">
             </div>
         </div>
         <div class="mb-3 row">
             <div class="col-sm-10">
-                <input name="correo" type="hidden" class="form-control" id="correo" value="<?php isset($_GET['correo']) ? print($_GET['correo']) : print($correo)?>">
+                <input name="correo" type="hidden" class="form-control" id="correo" value="<?php isset($peticion['correo']) ? print($peticion['correo']) : print($correo)?>">
             </div>
         </div>
         <div class="mb-3">
