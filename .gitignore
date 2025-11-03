@@ -1,5 +1,8 @@
-        models/
-        sistema.php
+        models/sistema.php
 
-        vendor/ 
-        */*
+        vendor/*.*
+
+        *.env
+        *.key
+
+        config.php
