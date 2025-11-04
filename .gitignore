@@ -1,7 +1,5 @@
         models/sistema.php
-
-        vendor/*.*
-
+        
         *.env
         *.key
 
