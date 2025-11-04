@@ -1,6 +1,6 @@
-        models/sistema.php
+/models/sistema.php
         
-        *.env
-        *.key
+*.env
+*.key
 
-        config.php
+config.php
