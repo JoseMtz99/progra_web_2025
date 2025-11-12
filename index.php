@@ -1,5 +1,5 @@
 <?php
-include_once('./views/header.php');
+include_once(__DIR__.'/views/header.php');
 ?>
         <br>
         <h2>Investigaciones destacadas</h2>
@@ -54,6 +54,6 @@ include_once('./views/header.php');
         
     </main>
     <?php
-include_once('./views/footer.php');
+include_once(__DIR__.'/views/footer.php');
 ?>
     

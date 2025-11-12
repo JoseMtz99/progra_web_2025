@@ -1,9 +1,9 @@
 <?php
-require_once("./models/institucion.php");
-include_once("views/header.php");
+require_once(__DIR__."/models/institucion.php");
+include_once(__DIR__."/views/header.php");
 $app = new Institucion;
 $instituciones=$app->read();
-include_once("./views/institucion/index.php");
+include_once(__DIR__."/views/institucion/index.php");
     
 ?>
 
@@ -24,5 +24,5 @@ include_once("./views/institucion/index.php");
     $result = $sth->fetchAll();
     print_r($result);
     */
-    include_once("./views/footer.php");
+    include_once(__DIR__."/views/footer.php");
 ?>

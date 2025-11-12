@@ -1,10 +1,10 @@
 <?php
-require_once("../models/role.php");
+require_once(__DIR__."/../models/role.php");
 $app = new Role();
 $app->checarRol('Administrador');
 $action = isset($_GET['action']) ? $_GET['action'] : 'read';
 $data = array();
-include_once("./views/header.php");
+include_once(__DIR__."/views/header.php");
 switch ($action) {
     case 'create':
         if (isset($_POST['enviar'])) {
@@ -13,16 +13,16 @@ switch ($action) {
             if ($row){
                 $alerta['mensaje'] = "Rol dado de alta correctamente";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__."/views/alert.php");
             }else{
                 $alerta['mensaje'] = "El rol no fue dado de alta";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__."/views/alert.php");
             }
             $data = $app -> read();
-            include_once("./views/role/index.php");
+            include_once(__DIR__."/views/role/index.php");
         }else{
-            include_once("./views/role/_form.php");
+            include_once(__DIR__."/views/role/_form.php");
         }
         break;
 
@@ -34,18 +34,18 @@ switch ($action) {
             if ($row){
                 $alerta['mensaje'] = "Rol modificado correctamente";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__."/views/alert.php");
             }else{
                 $alerta['mensaje'] = "El rol no fue modificado";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__."/views/alert.php");
             }
             $data = $app -> read();
-            include_once("./views/role/index.php");
+            include_once(__DIR__."/views/role/index.php");
         }else{
             $id = $_GET['id'];
             $data = $app -> readOne($id);
-            include_once("./views/role/_form_update.php");
+            include_once(__DIR__."/views/role/_form_update.php");
         }
         break;
 
@@ -56,22 +56,22 @@ switch ($action) {
             if ($row){
                 $alerta['mensaje'] = "Rol eliminado correctamente";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__."/views/alert.php");
             }else{
                 $alerta['mensaje'] = "El rol no eliminado";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__."/views/alert.php");
             }
         }
         $data = $app -> read();
-        include_once("./views/role/index.php");
+        include_once(__DIR__."/views/role/index.php");
         break;
         
     case 'read':
     default:
         $data = $app -> read();
-        include_once("./views/role/index.php");
+        include_once(__DIR__."/views/role/index.php");
         break;
 }
-include_once("./views/footer.php");
+include_once(__DIR__."/views/footer.php");
 ?>
